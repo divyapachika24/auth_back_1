@@ -108,8 +108,8 @@ router.get("/", auth, async (req, res) => {
   res.json({
     displayName: user.displayName,
     id: user._id,
-  });
-
+  }); 
+  
 });
 
 module.exports = router;
