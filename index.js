@@ -31,3 +31,5 @@ mongoose.connect(
 // set up routes
 
 app.use("/users", require("./routes/userRouter"));
+app.use("/budgetPlan", require("./routes/budgetPlanRouter"));
+app.use("/budgetSpent", require("./routes/budgetSpentRouter"));
