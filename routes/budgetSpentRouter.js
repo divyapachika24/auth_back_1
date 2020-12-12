@@ -4,15 +4,15 @@ const Plan = require("../models/budgetSpentModel");
 
 router.post("/", auth, async (req, res) => {
   try{
-    let { category, spentAmount } = req.body;
+    let { category2, spentAmount } = req.body;
 
-    if (!category)
+    if (!category2)
       return res.status(400).json({ msg: "Please provide category"});
     if (!spentAmount)
       return res.status(400).json({ msg: "Please provide amount spent"});
 
     const newSpent = new Spent({
-      category,
+      category2,
       spentAmount,
       userId: req.user,
     });
@@ -20,6 +20,9 @@ router.post("/", auth, async (req, res) => {
     res.json(savedSpent);
     
   }catch (err) {
+    if(err){
+      return res.status(400).json({ msg: "Category already exists"});
+    }
       res.status(500).json({ error: err.message });
   }
 });
